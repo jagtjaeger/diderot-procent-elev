@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Diderot – Procent | Elevversion</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f7f3ee; --card: #fffcf8; --text: #3d3833; --muted: #7a736b; --border: #e8dfd4;
+      --accent: #e8a87c; --accent-soft: #fdf0e6;
+      --green-text: #2f7a5c; --green-soft: #e8f6f0; --coral-text: #a34d4d; --coral-soft: #faf0f0;
+      --shadow: 0 6px 24px rgba(120, 100, 80, 0.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Nunito, system-ui, sans-serif;
+      background: radial-gradient(ellipse at 20% 0%, #f5ebe0 0%, transparent 50%), radial-gradient(ellipse at 90% 20%, #f0e8f2 0%, transparent 45%), var(--bg);
+      color: var(--text); min-height: 100vh;
+    }
+    .wrap { max-width: 440px; margin: 0 auto; padding: 1.75rem 1.15rem 3rem; }
+    .badge { display: inline-flex; font-size: 0.75rem; font-weight: 700; color: #9a6b45; background: var(--accent-soft); border: 1.5px solid #f0dcc8; padding: 0.35rem 0.75rem; border-radius: 999px; margin-bottom: 1rem; }
+    h1 { font-size: 1.75rem; font-weight: 800; margin-bottom: 0.35rem; }
+    h1 span { color: #c4845a; }
+    .sub { color: var(--muted); font-size: 0.95rem; font-weight: 600; margin-bottom: 1.4rem; }
+    .card { background: var(--card); border: 1.5px solid var(--border); border-radius: 20px; padding: 1.35rem; box-shadow: var(--shadow); }
+    .meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.85rem; }
+    .pill { font-size: 0.8rem; font-weight: 800; color: #7a4e32; background: var(--accent-soft); border: 1.5px solid #f0dcc8; padding: 0.35rem 0.8rem; border-radius: 999px; }
+    .level-label { font-size: 0.72rem; color: var(--muted); font-weight: 700; margin-bottom: 0.25rem; text-align: right; }
+    .level-bar { display: flex; gap: 4px; justify-content: flex-end; }
+    .level-dot { width: 18px; height: 8px; border-radius: 99px; background: #ebe3da; }
+    .level-dot.on { background: var(--accent); }
+    .q { font-size: 1.12rem; font-weight: 700; line-height: 1.4; margin-bottom: 1.2rem; }
+    .row { display: flex; gap: 0.55rem; margin-bottom: 0.85rem; }
+    input[type=text] { flex: 1; background: #faf7f3; border: 1.5px solid var(--border); border-radius: 14px; padding: 0.8rem 0.95rem; color: var(--text); font-size: 1rem; font-family: inherit; font-weight: 600; }
+    input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(232,168,124,0.2); }
+    button { font-family: inherit; cursor: pointer; border: none; border-radius: 14px; font-size: 0.95rem; font-weight: 800; }
+    .btn-main { background: var(--accent); color: #fff; padding: 0.8rem 1.15rem; white-space: nowrap; }
+    .btn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.65rem; }
+    .btn-interest { background: #faf7f3; color: var(--text); border: 1.5px solid var(--border); padding: 1rem 0.7rem; font-weight: 700; }
+    .btn-interest:hover { border-color: var(--accent); background: var(--accent-soft); color: #9a6b45; }
+    .label { margin-bottom: 0.9rem; color: var(--muted); font-size: 0.95rem; font-weight: 700; }
+    .ok { color: var(--green-text); background: var(--green-soft); font-size: 0.9rem; font-weight: 800; margin-bottom: 0.75rem; padding: 0.65rem 0.85rem; border-radius: 12px; }
+    .bad { color: var(--coral-text); background: var(--coral-soft); font-size: 0.9rem; font-weight: 800; margin-bottom: 0.75rem; padding: 0.65rem 0.85rem; border-radius: 12px; }
+    .box { margin-top: 0.85rem; border: 1.5px solid var(--border); border-radius: 16px; padding: 1rem; background: #faf7f3; font-size: 0.9rem; line-height: 1.55; color: var(--muted); font-weight: 600; }
+    .box p { margin-bottom: 0.9rem; } .box p:last-child { margin-bottom: 0; }
+    .tag { display: block; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; margin-bottom: 0.2rem; }
+    .g { color: var(--green-text); } .b { color: #3d7a8c; } .p { color: #6b4f82; } .y { color: #9a6b45; }
+    .box strong { color: var(--text); font-weight: 800; }
+    .link { display: inline-block; margin-top: 1.1rem; background: none; color: #c4845a; font-weight: 800; font-size: 0.95rem; padding: 0; }
+    .link-muted { display: inline-block; margin-top: 0.6rem; background: none; color: var(--muted); font-weight: 700; font-size: 0.85rem; padding: 0; text-decoration: underline; }
+    .foot { margin-top: 1.5rem; }
+    .foot h2 { font-size: 0.8rem; font-weight: 800; text-transform: uppercase; color: var(--muted); margin-bottom: 0.65rem; }
+    textarea { width: 100%; background: var(--card); border: 1.5px solid var(--border); border-radius: 16px; padding: 0.9rem; color: var(--text); font-size: 0.9rem; font-family: inherit; font-weight: 600; resize: vertical; min-height: 6.5rem; }
+    .btn-sec { margin-top: 0.7rem; width: 100%; background: var(--accent); color: #fff; padding: 0.85rem 1rem; font-weight: 800; }
+    .center { text-align: center; padding: 2rem 0.5rem; }
+    .muted { color: var(--muted); font-size: 0.95rem; font-weight: 600; }
+    pre { text-align: left; background: var(--card); border: 1.5px solid var(--border); padding: 1.15rem; border-radius: 18px; font-size: 0.88rem; white-space: pre-wrap; margin-top: 1.1rem; font-family: Nunito,sans-serif; color: var(--muted); font-weight: 600; }
+    .patch-stats { font-size: 0.78rem; color: var(--muted); font-weight: 700; margin-bottom: 0.9rem; display: flex; justify-content: space-between; }
+    .decision-card { text-align: center; }
+    .decision-card h2 { font-size: 1.25rem; font-weight: 800; margin-bottom: 0.5rem; }
+    .decision-card p { color: var(--muted); font-weight: 600; margin-bottom: 1.25rem; line-height: 1.45; }
+    .btn-row { display: flex; flex-direction: column; gap: 0.6rem; }
+    .btn-stay { background: var(--accent); color: #fff; padding: 0.95rem 1rem; width: 100%; }
+    .btn-explore { background: #faf7f3; color: var(--text); border: 1.5px solid var(--border); padding: 0.95rem 1rem; width: 100%; }
+    @media (max-width: 420px) { h1 { font-size: 1.55rem; } .btn-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="wrap" id="app"></div>
+  <script>
+    // Full script will be in the actual file - this is a placeholder for the push structure
+    alert("Ladda den fullständiga versionen från artifacts");
+  </script>
+</body>
+</html>
